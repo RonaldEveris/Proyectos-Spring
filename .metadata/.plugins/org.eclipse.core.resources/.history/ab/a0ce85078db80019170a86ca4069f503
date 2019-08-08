@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleof.org">
+<head>
+<meta charset="UTF-8"/>
+<title th:text="${titulo}">Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+</head>
+<body>
+   
+   	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<a class="navbar-brand" href="#">Spring Boot</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarsExampleDefault" 
+			aria-controls="navbarsExampleDefault" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+             <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+             <li class="nav-item"><a class="nav-link" href="#about" th:href="@{/listar}">Cliente</a></li> 
+          </ul>
+        </div>
+	</nav>
+	<hr/><hr/>
+
+	<div class="container">
+		<h1 th:text="${titulo}"
+			class="text-secondary border border-success border-top-0  border-left-0 border-right-0"></h1>
+
+		<form th:action="@{/form}" th:object="${cliente}" method="post">
+			<table>
+				<tr>
+					<td>Nombre</td>
+					<td><input type="text" th:field="*{nombre}" /></td>
+				</tr>
+				<tr>
+					<td>Apellido</td>
+					<td><input type="text" th:field="*{apellido}" /></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="email" th:field="*{email}" /></td>
+				</tr>
+
+				<tr>
+					<td><input type="submit" value="Crear Cliente" /></td>
+				</tr>
+
+			</table>
+			<input type="hidden" th:field="*{id}" />
+		</form>
+	</div>
+
+
+</body>
+</html>
